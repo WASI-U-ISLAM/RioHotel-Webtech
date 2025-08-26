@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Log In Page</title>
+        <title>Login Page</title>
     </head>
+    <body>
+    <div class="login-container">
+    <h2>LOG-IN</h2>
+    <form action = "../php/fd.php" method="POST">
+        <div class="input-group">
+            <label for="username">Username :</label>
+            <input type="text" name="username" id="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password :</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+            <button type="submit" name="ogin">Login</button>
+    </form>
+    </body>
 </html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <img src="../Image/RH.png" alt="Rio Hotel Logo" class="sidebar-logo">
+                <h2 class="sidebar-title">Admin Panel</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="sidebar-link active"><i class="fas fa-chart-line"></i> Dashboard</a>
+                <div class="sidebar-section">Management</div>
+                <a href="#" class="sidebar-link"><i class="fas fa-users"></i> Users</a>
+                <a href="#" class="sidebar-link"><i class="fas fa-bed"></i> Rooms</a>
+                <a href="#" class="sidebar-link"><i class="fas fa-calendar-check"></i> Bookings</a>
+                <a href="#" class="sidebar-link"><i class="fas fa-broom"></i> Housekeepers</a>
+                <div class="sidebar-section">Account</div>
+                <a href="../php/logout.php" class="sidebar-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </aside>
+        <main class="dashboard-main">
+            <header class="dashboard-header">
+                <h1>Welcome, Admin!</h1>
+                <div class="dashboard-date">September 9, 2025</div>
+            </header>
+            <section class="dashboard-section">
+                <h2 class="section-title"><i class="fas fa-info-circle"></i> Hotel Overview</h2>
+                <div class="admin-stats">
+                    <div class="stat-card">
+                        <h2><i class="fas fa-users"></i> Guests</h2>
+                        <p>120</p>
+                    </div>
+                    <div class="stat-card">
+                        <h2><i class="fas fa-bed"></i> Rooms</h2>
+                        <p>60</p>
+                    </div>
+                    <div class="stat-card">
+                        <h2><i class="fas fa-calendar-check"></i> Bookings</h2>
+                        <p>8</p>
+                    </div>
+                    <div class="stat-card">
+                        <h2><i class="fas fa-user-tie"></i> Staff</h2>
+                        <p>15</p>
+                    </div>
+                </div>
+            </section>
+            <section class="dashboard-section">
+                <h2 class="section-title"><i class="fas fa-chart-pie"></i> Occupancy & Activity</h2>
+                <div class="dashboard-row">
+                    <div class="dashboard-chart">
+                        <h3><i class="fas fa-chart-pie"></i> Occupancy Chart</h3>
+                        <div class="chart-placeholder">[Chart Placeholder]</div>
+                    </div>
+                    <div class="dashboard-activity">
+                        <h3><i class="fas fa-clock"></i> Recent Activity</h3>
+                        <ul>
+                            <li><i class="fas fa-user-plus"></i> New guest registered</li>
+                            <li><i class="fas fa-bed"></i> Room 203 booked</li>
+                            <li><i class="fas fa-broom"></i> Housekeeper assigned to Room 105</li>
+                            <li><i class="fas fa-calendar-check"></i> Booking #456 confirmed</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section class="dashboard-section">
+                <h2 class="section-title"><i class="fas fa-tools"></i> Management Actions</h2>
+                <div class="admin-actions">
+                    <a class="btn" href="#"><i class="fas fa-users"></i> Manage Users</a>
+                    <a class="btn" href="#"><i class="fas fa-bed"></i> Manage Rooms</a>
+                    <a class="btn" href="#"><i class="fas fa-calendar-check"></i> View Bookings</a>
+                    <a class="btn" href="#"><i class="fas fa-broom"></i> Assign Housekeepers</a>
+                </div>
+            </section>
+                <h2><i class="fas fa-hotel"></i> About Rio Hotel</h2>
+                <p>Rio Hotel is a luxury destination offering elegant rooms, world-class service, and a relaxing atmosphere. Located in the heart of the city, we provide guests with comfort, convenience, and unforgettable experiences.</p>
+                <ul style="margin-top:10px;">
+                    <li><i class="fas fa-map-marker-alt"></i> Address: 123 Main Street, City Center</li>
+                    <li><i class="fas fa-phone"></i> Contact: +1 234 567 890 | info@riohotel.com</li>
+                    <li><i class="fas fa-concierge-bell"></i> Facilities: Spa, Gym, Pool, Restaurant, Conference Hall</li>
+                </ul>
+            </section>
+            <section class="room-list">
+                <h2><i class="fas fa-bed"></i> Sample Rooms</h2>
+                <div class="rooms" style="display:flex; gap:24px; flex-wrap:wrap;">
+                    <div class="room" style="flex:1; min-width:220px; background:#f7f7ff; border-radius:12px; box-shadow:0 1px 4px rgba(0,0,0,0.04); padding:20px;">
+                        <h3 style="color:#2575fc;"><i class="fas fa-crown"></i> Deluxe Suite</h3>
+                        <p>King bed, city view, ensuite bathroom, free Wi-Fi, breakfast included.</p>
+                        <p><strong>Price:</strong> $180/night</p>
+                    </div>
+                    <div class="room" style="flex:1; min-width:220px; background:#f7f7ff; border-radius:12px; box-shadow:0 1px 4px rgba(0,0,0,0.04); padding:20px;">
+                        <h3 style="color:#2575fc;"><i class="fas fa-briefcase"></i> Executive Room</h3>
+                        <p>Queen bed, workspace, complimentary minibar, high-speed internet.</p>
+                        <p><strong>Price:</strong> $140/night</p>
+                    </div>
+                    <div class="room" style="flex:1; min-width:220px; background:#f7f7ff; border-radius:12px; box-shadow:0 1px 4px rgba(0,0,0,0.04); padding:20px;">
+                        <h3 style="color:#2575fc;"><i class="fas fa-leaf"></i> Standard Room</h3>
+                        <p>Double bed, garden view, air conditioning, flat-screen TV.</p>
+                        <p><strong>Price:</strong> $100/night</p>
+                    </div>
+                </div>
+            </section>
+            <section class="admin-actions" style="margin-top:40px;">
+                <h2><i class="fas fa-tools"></i> Quick Management</h2>
+                <div style="display:flex; gap:30px; flex-wrap:wrap;">
+                    <a class="btn" href="#"><i class="fas fa-users"></i> Manage Users</a>
+                    <a class="btn" href="#"><i class="fas fa-bed"></i> Manage Rooms</a>
+                    <a class="btn" href="#"><i class="fas fa-calendar-check"></i> View Bookings</a>
+                    <a class="btn" href="#"><i class="fas fa-broom"></i> Assign Housekeepers</a>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

@@ -2,24 +2,80 @@
 <html>
     <head>
         <title>Login Page</title>
-        <link rel="stylesheet" href="../css/login.css">
+        <link rel="stylesheet" href="../css/style.css">
     </head>
     <body>
     <div class="login-container">
     <h2>LOG-IN</h2>
-    <form action = "../php/login_validation.php" method="POST">
+    <form id="loginForm" action="../php/login_validation.php" method="POST">
         <div class="input-group">
             <label for="username">Username :</label>
-            <input type="text" name="username" id="username" required>
-            </div>
-            <div class="input-group">
-                <label for="password">Password :</label>
-                <input type="password" name="password" id="password" required>
-            </div>
-            <button type="submit" name="ogin">Login</button>
-            <div class="input-group">
+            <input type="text" name="username" id="username">
+            <div id="usernameError" class="field-error" style="display:none;color:#e74c3c;font-size:0.95em;margin-top:4px;"></div>
+        </div>
+        <div class="input-group">
+            <label for="password">Password :</label>
+                <input type="password" name="password" id="password">
+                <div id="passwordError" class="field-error" style="display:none;color:#e74c3c;font-size:0.95em;margin-top:4px;"></div>
+        </div>
+        <button type="submit" name="ogin">Login</button>
+        <div class="input-group">
             <p>Don't have an account? <a href="register.html">Register here</a></p>
-            </div>
+        </div>
     </form>
+    <div id="popupBar" class="popup-bar" style="display:none;"></div>
+    <script>
+    // Show popup for empty fields
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        var usernameInput = document.getElementById('username');
+        var passwordInput = document.getElementById('password');
+        var usernameError = document.getElementById('usernameError');
+        var passwordError = document.getElementById('passwordError');
+        var username = usernameInput.value.trim();
+        var password = passwordInput.value.trim();
+        var hasError = false;
+        if (!username) {
+            usernameInput.style.border = '2px solid #e74c3c';
+            usernameError.textContent = 'Username is required.';
+            usernameError.style.display = 'block';
+            hasError = true;
+        } else {
+            usernameInput.style.border = '';
+            usernameError.textContent = '';
+            usernameError.style.display = 'none';
+        }
+        if (!password) {
+            passwordInput.style.border = '2px solid #e74c3c';
+            passwordError.textContent = 'Password is required.';
+            passwordError.style.display = 'block';
+            hasError = true;
+        } else {
+            passwordInput.style.border = '';
+            passwordError.textContent = '';
+            passwordError.style.display = 'none';
+        }
+        if (hasError) {
+            e.preventDefault();
+            showPopup('Please enter both username and password.');
+        }
+    });
+
+    // Show popup for invalid credentials
+    function showPopup(message) {
+        var popup = document.getElementById('popupBar');
+        popup.textContent = message;
+        popup.style.display = 'block';
+        setTimeout(function() {
+            popup.style.display = 'none';
+        }, 2500);
+    }
+
+    window.onload = function() {
+        var params = new URLSearchParams(window.location.search);
+        if (params.get('error') === 'invalid') {
+            showPopup('Invalid username or password.');
+        }
+    };
+    </script>
     </body>
 </html>

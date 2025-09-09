@@ -2,11 +2,12 @@
 <html>
     <head>
         <title>Login Page</title>
+        <link rel="stylesheet" href="../css/login.css">
     </head>
     <body>
     <div class="login-container">
     <h2>LOG-IN</h2>
-    <form action = "../php/validation.php" method="POST">
+    <form action = "../php/login_validation.php" method="POST">
         <div class="input-group">
             <label for="username">Username :</label>
             <input type="text" name="username" id="username" required>
@@ -16,6 +17,9 @@
                 <input type="password" name="password" id="password" required>
             </div>
             <button type="submit" name="ogin">Login</button>
+            <div class="input-group">
+            <p>Don't have an account? <a href="register.html">Register here</a></p>
+            </div>
     </form>
     </body>
 </html>

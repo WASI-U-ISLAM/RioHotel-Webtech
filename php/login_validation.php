@@ -1,6 +1,6 @@
 <?php
-$valid_username = "user";
-$valid_password = "pass";
+$valid_username = "admin";
+$valid_password = "1234";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];

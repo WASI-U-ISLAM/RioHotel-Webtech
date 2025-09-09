@@ -15,13 +15,14 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
     elseif($password!==$confirm_password){
         echo"<h2 style='text-align:center; color:red;'>Passwords do not matched!</h2>";
     }
-    else{
-        echo"h2 style='text-align:center; color:green;'>Registration Successful!</h2>"; echo"<p style='text-align:center;'>Welcome, $username! You can now <a herf='login.html'>Login</a>.</p>";
+        else{
+            echo"<h2 style='text-align:center; color:green;'>Registration Successful!</h2>"; 
+            echo"<p style='text-align:center;'>Welcome, $username! You can now <a href='login.html'>Login</a>.</p>";
+        }
     }
     else{
         header("Location:register.html");
         exit();
-    }
 
 }
 ?>

@@ -1,120 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rio Hotel | Admin Dashboard (Alt Pattern)</title>
+<link rel="icon" type="image/x-icon" href="../Image/RH.ico" />
+<link rel="stylesheet" href="../css/style.css?v=alt1" />
 </head>
-<body>
-    <div class="dashboard-layout">
-        <aside class="dashboard-sidebar">
-            <div class="sidebar-header">
-                <img src="../Image/RH.png" alt="Rio Hotel Logo" class="sidebar-logo">
-                <h2 class="sidebar-title">Admin Panel</h2>
-            </div>
-            <nav class="sidebar-nav">
-                <a href="#" class="sidebar-link active"><i class="fas fa-chart-line"></i> Dashboard</a>
-                <div class="sidebar-section">Management</div>
-                <a href="#" class="sidebar-link"><i class="fas fa-users"></i> Users</a>
-                <a href="#" class="sidebar-link"><i class="fas fa-bed"></i> Rooms</a>
-                <a href="#" class="sidebar-link"><i class="fas fa-calendar-check"></i> Bookings</a>
-                <a href="#" class="sidebar-link"><i class="fas fa-broom"></i> Housekeepers</a>
-                <div class="sidebar-section">Account</div>
-                <a href="../php/logout.php" class="sidebar-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
-            </nav>
-        </aside>
-        <main class="dashboard-main">
-            <header class="dashboard-header">
-                <h1>Welcome, Admin!</h1>
-                <div class="dashboard-date">September 9, 2025</div>
-            </header>
-            <section class="dashboard-section">
-                <h2 class="section-title"><i class="fas fa-info-circle"></i> Hotel Overview</h2>
-                <div class="admin-stats">
-                    <div class="stat-card">
-                        <h2><i class="fas fa-users"></i> Guests</h2>
-                        <p>120</p>
-                    </div>
-                    <div class="stat-card">
-                        <h2><i class="fas fa-bed"></i> Rooms</h2>
-                        <p>60</p>
-                    </div>
-                    <div class="stat-card">
-                        <h2><i class="fas fa-calendar-check"></i> Bookings</h2>
-                        <p>8</p>
-                    </div>
-                    <div class="stat-card">
-                        <h2><i class="fas fa-user-tie"></i> Staff</h2>
-                        <p>15</p>
-                    </div>
-                </div>
-            </section>
-            <section class="dashboard-section">
-                <h2 class="section-title"><i class="fas fa-chart-pie"></i> Occupancy & Activity</h2>
-                <div class="dashboard-row">
-                    <div class="dashboard-chart">
-                        <h3><i class="fas fa-chart-pie"></i> Occupancy Chart</h3>
-                        <div class="chart-placeholder">[Chart Placeholder]</div>
-                    </div>
-                    <div class="dashboard-activity">
-                        <h3><i class="fas fa-clock"></i> Recent Activity</h3>
-                        <ul>
-                            <li><i class="fas fa-user-plus"></i> New guest registered</li>
-                            <li><i class="fas fa-bed"></i> Room 203 booked</li>
-                            <li><i class="fas fa-broom"></i> Housekeeper assigned to Room 105</li>
-                            <li><i class="fas fa-calendar-check"></i> Booking #456 confirmed</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-            <section class="dashboard-section">
-                <h2 class="section-title"><i class="fas fa-tools"></i> Management Actions</h2>
-                <div class="admin-actions">
-                    <a class="btn" href="#"><i class="fas fa-users"></i> Manage Users</a>
-                    <a class="btn" href="#"><i class="fas fa-bed"></i> Manage Rooms</a>
-                    <a class="btn" href="#"><i class="fas fa-calendar-check"></i> View Bookings</a>
-                    <a class="btn" href="#"><i class="fas fa-broom"></i> Assign Housekeepers</a>
-                </div>
-            </section>
-                <h2><i class="fas fa-hotel"></i> About Rio Hotel</h2>
-                <p>Rio Hotel is a luxury destination offering elegant rooms, world-class service, and a relaxing atmosphere. Located in the heart of the city, we provide guests with comfort, convenience, and unforgettable experiences.</p>
-                <ul style="margin-top:10px;">
-                    <li><i class="fas fa-map-marker-alt"></i> Address: 123 Main Street, City Center</li>
-                    <li><i class="fas fa-phone"></i> Contact: +1 234 567 890 | info@riohotel.com</li>
-                    <li><i class="fas fa-concierge-bell"></i> Facilities: Spa, Gym, Pool, Restaurant, Conference Hall</li>
-                </ul>
-            </section>
-            <section class="room-list">
-                <h2><i class="fas fa-bed"></i> Sample Rooms</h2>
-                <div class="rooms" style="display:flex; gap:24px; flex-wrap:wrap;">
-                    <div class="room" style="flex:1; min-width:220px; background:#f7f7ff; border-radius:12px; box-shadow:0 1px 4px rgba(0,0,0,0.04); padding:20px;">
-                        <h3 style="color:#2575fc;"><i class="fas fa-crown"></i> Deluxe Suite</h3>
-                        <p>King bed, city view, ensuite bathroom, free Wi-Fi, breakfast included.</p>
-                        <p><strong>Price:</strong> $180/night</p>
-                    </div>
-                    <div class="room" style="flex:1; min-width:220px; background:#f7f7ff; border-radius:12px; box-shadow:0 1px 4px rgba(0,0,0,0.04); padding:20px;">
-                        <h3 style="color:#2575fc;"><i class="fas fa-briefcase"></i> Executive Room</h3>
-                        <p>Queen bed, workspace, complimentary minibar, high-speed internet.</p>
-                        <p><strong>Price:</strong> $140/night</p>
-                    </div>
-                    <div class="room" style="flex:1; min-width:220px; background:#f7f7ff; border-radius:12px; box-shadow:0 1px 4px rgba(0,0,0,0.04); padding:20px;">
-                        <h3 style="color:#2575fc;"><i class="fas fa-leaf"></i> Standard Room</h3>
-                        <p>Double bed, garden view, air conditioning, flat-screen TV.</p>
-                        <p><strong>Price:</strong> $100/night</p>
-                    </div>
-                </div>
-            </section>
-            <section class="admin-actions" style="margin-top:40px;">
-                <h2><i class="fas fa-tools"></i> Quick Management</h2>
-                <div style="display:flex; gap:30px; flex-wrap:wrap;">
-                    <a class="btn" href="#"><i class="fas fa-users"></i> Manage Users</a>
-                    <a class="btn" href="#"><i class="fas fa-bed"></i> Manage Rooms</a>
-                    <a class="btn" href="#"><i class="fas fa-calendar-check"></i> View Bookings</a>
-                    <a class="btn" href="#"><i class="fas fa-broom"></i> Assign Housekeepers</a>
-                </div>
-            </section>
-        </main>
+<body class="alt-body">
+<header class="alt-topbar" role="banner">
+    <div class="alt-brand"><img src="../Image/RH.png" alt="Rio Hotel Logo" /><span>Rio Hotel Admin</span></div>
+    <nav class="alt-nav" id="altPrimaryNav" aria-label="Primary navigation">
+        <a href="#dash" class="alt-nav-link active" data-link="dash">🏠 Dashboard</a>
+        <a href="#bookings" class="alt-nav-link" data-link="bookings">🛎️ Bookings</a>
+        <a href="#rooms" class="alt-nav-link" data-link="rooms">🛏️ Rooms</a>
+        <a href="#housekeeping" class="alt-nav-link" data-link="housekeeping">🧹 Housekeeping</a>
+        <a href="#finance" class="alt-nav-link" data-link="finance">💳 Finance</a>
+        <a href="#reports" class="alt-nav-link" data-link="reports">📊 Reports</a>
+        <a href="#settings" class="alt-nav-link" data-link="settings">⚙️ Settings</a>
+    </nav>
+    <div class="alt-top-right">
+        <div class="alt-search" role="search"><span>🔍</span><input type="search" id="altSearch" placeholder="Search ( / )" aria-label="Search" /></div>
+        <button id="altUserBtn" class="alt-user-btn"><span class="alt-avatar">AD</span><span class="hide-m">Admin</span></button>
     </div>
+</header>
+<aside class="alt-rail" aria-label="Quick actions">
+    <button title="Add Booking" data-quick="add-booking">➕</button>
+    <button title="Add Room" data-quick="add-room">🛏️</button>
+    <button title="Add Staff" data-quick="add-staff">👤</button>
+    <button title="Assign Task" data-quick="task">🧹</button>
+</aside>
+<main class="alt-wrapper" id="dash" tabindex="-1">
+    <section class="alt-panels" aria-labelledby="altOps">
+        <h2 id="altOps" class="sr-only">Operational Panels</h2>
+        <article class="alt-panel" aria-labelledby="altRecentTitle"><h3 id="altRecentTitle" class="alt-panel-title">Recent Activity</h3><ul class="alt-list" id="altRecent"><li>Room 304 checked in <span class="alt-time">09:14</span></li><li>Invoice #782 generated <span class="alt-time">09:06</span></li><li>Late checkout approved <span class="alt-time">08:52</span></li><li>New staff shift assigned <span class="alt-time">08:40</span></li></ul></article>
+        <article class="alt-panel" aria-labelledby="altHKTitle"><h3 id="altHKTitle" class="alt-panel-title">Housekeeping</h3><ul class="alt-list"><li>Rm 210 – Turnover <span class="alt-pill pending">Pending</span></li><li>Rm 402 – Deep Clean <span class="alt-pill">In Progress</span></li><li>Rm 115 – Linen Refresh <span class="alt-pill ok">Done</span></li><li>Rm 506 – Sanitization <span class="alt-pill pending">Pending</span></li></ul></article>
+        <article class="alt-panel" aria-labelledby="altCheckinsTitle"><h3 id="altCheckinsTitle" class="alt-panel-title">Upcoming Check-ins</h3><ul class="alt-list"><li>10:30 • A. Rahman – Deluxe Suite <span class="alt-time">ETA</span></li><li>11:00 • S. Chen – Executive King <span class="alt-time">ETA</span></li><li>11:45 • P. Davis – Standard Twin <span class="alt-time">ETA</span></li><li>12:15 • L. Ortega – Family Suite <span class="alt-time">ETA</span></li></ul></article>
+    </section>
+    <section aria-labelledby="altBookingsTitle">
+        <h2 id="altBookingsTitle" class="alt-panel-title">Today's Bookings</h2>
+        <div class="alt-table-wrap" role="region" aria-label="Bookings table">
+            <table class="alt-table" id="altBookingsTable">
+                <thead><tr><th>Booking ID</th><th>Guest</th><th>Room</th><th>Check-In</th><th>Check-Out</th><th>Status</th><th>Amount</th></tr></thead>
+                <tbody>
+                    <tr><td>BK-7821</td><td>Adil Khan</td><td>Deluxe 304</td><td>09:00</td><td>Tomorrow</td><td><span class="alt-pill ok">Checked-In</span></td><td>$240</td></tr>
+                    <tr><td>BK-7822</td><td>Sara Lee</td><td>Standard 208</td><td>08:45</td><td>Tomorrow</td><td><span class="alt-pill pending">Pending</span></td><td>$180</td></tr>
+                    <tr><td>BK-7823</td><td>David Kim</td><td>Executive 512</td><td>09:30</td><td>+2 Days</td><td><span class="alt-pill due">Due Out</span></td><td>$460</td></tr>
+                    <tr><td>BK-7824</td><td>Linda Park</td><td>Suite 601</td><td>09:45</td><td>+3 Days</td><td><span class="alt-pill ok">Checked-In</span></td><td>$680</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <footer class="alt-footer" role="contentinfo">© <span id="altYear"></span> Rio Hotel • Alt Pattern</footer>
+</main>
+<div class="alt-toast-region" id="altToastRegion" aria-live="polite" aria-atomic="false"></div>
+<script>
+(function(){
+  const html=document.documentElement;
+  const yearEl=document.getElementById('altYear');
+    const navLinks=[...document.querySelectorAll('.alt-nav-link')];
+  const toastRegion=document.getElementById('altToastRegion');
+  yearEl.textContent=new Date().getFullYear();
+  function showToast(msg){const d=document.createElement('div');d.className='alt-toast';d.textContent=msg;toastRegion.appendChild(d);requestAnimationFrame(()=>d.classList.add('show'));setTimeout(()=>{d.classList.remove('show');setTimeout(()=>d.remove(),320);},3000);} 
+  navLinks.forEach(l=>l.addEventListener('click',()=>{navLinks.forEach(n=>n.classList.remove('active'));l.classList.add('active');localStorage.setItem('rh_alt_nav',l.dataset.link);}));
+  const savedNav=localStorage.getItem('rh_alt_nav');
+  if(savedNav){const match=navLinks.find(n=>n.dataset.link===savedNav); if(match){navLinks.forEach(n=>n.classList.remove('active'));match.classList.add('active');}}
+  document.querySelectorAll('[data-quick]').forEach(btn=> btn.addEventListener('click',()=> showToast('Quick: '+btn.dataset.quick)));
+  document.addEventListener('keydown',e=>{if(e.key==='/' && document.activeElement.tagName!=='INPUT'){e.preventDefault();document.getElementById('altSearch').focus();}});
+        // Metrics section removed; skipping animation init
+        setTimeout(()=>{showToast('Dashboard ready');},300);
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rio Hotel | Housekeeping Portal</title>
+<link rel="icon" type="image/x-icon" href="../Image/RH.ico" />
+<link rel="stylesheet" href="../css/style.css?v=alt1" />
+</head>
+<body class="alt-body" data-role="housekeeping">
+<header class="alt-topbar" role="banner">
+  <div class="alt-brand"><img src="../Image/RH.png" alt="Rio Hotel Logo" /><span>Housekeeping</span></div>
+  <nav class="alt-nav" id="hkNav" aria-label="Housekeeping navigation">
+    <a href="#tasks" class="alt-nav-link active" data-link="tasks">🧹 Tasks</a>
+    <a href="#rooms" class="alt-nav-link" data-link="rooms">🛏️ Rooms</a>
+    <a href="#supplies" class="alt-nav-link" data-link="supplies">📦 Supplies</a>
+    <a href="#staff" class="alt-nav-link" data-link="staff">👥 Staff</a>
+    <a href="#reports" class="alt-nav-link" data-link="reports">📊 Reports</a>
+    <a href="../login.html" class="alt-nav-link" data-link="logout">🚪 Logout</a>
+  </nav>
+  <div class="alt-top-right">
+    <div class="alt-search" role="search"><span>🔍</span><input type="search" id="hkSearch" placeholder="Search tasks" aria-label="Search" /></div>
+    <button id="hkUserBtn" class="alt-user-btn"><span class="alt-avatar">HK</span><span class="hide-m">Lead</span></button>
+  </div>
+</header>
+<aside class="alt-rail" aria-label="Quick actions">
+  <button title="Add Task" data-quick="add-task">➕</button>
+  <button title="Mark Clean" data-quick="mark-clean">✅</button>
+  <button title="Report Issue" data-quick="issue">⚠️</button>
+  <button title="Order Supplies" data-quick="order">📦</button>
+</aside>
+<main class="alt-wrapper" tabindex="-1">
+  <!-- Task Queue -->
+  <section id="tasks" class="alt-panels" aria-labelledby="hkTasksTitle">
+    <h2 id="hkTasksTitle" class="sr-only">Task Queue</h2>
+    <article class="alt-panel" aria-labelledby="taskQueueTitle">
+      <h3 id="taskQueueTitle" class="alt-panel-title">Task Queue</h3>
+      <ul class="alt-list" id="hkTaskList">
+        <li>Rm 210 – Turnover <span class="alt-pill pending">In Progress</span></li>
+        <li>Rm 402 – Deep Clean <span class="alt-pill pending">In Progress</span></li>
+        <li>Rm 115 – Linen Refresh <span class="alt-pill ok">Done</span></li>
+        <li>Rm 506 – Sanitization <span class="alt-pill due">Pending</span></li>
+      </ul>
+    </article>
+    <article class="alt-panel" aria-labelledby="liveStatusTitle">
+      <h3 id="liveStatusTitle" class="alt-panel-title">Live Room Status</h3>
+      <div class="alt-table-wrap" role="region" aria-label="Room status table">
+        <table class="alt-table" id="hkRoomsTable">
+          <thead><tr><th>Room</th><th>Status</th><th>Priority</th><th>ETA</th></tr></thead>
+          <tbody>
+            <tr><td>210</td><td><span class="alt-pill pending">Cleaning</span></td><td>High</td><td>15m</td></tr>
+            <tr><td>402</td><td><span class="alt-pill pending">Deep Clean</span></td><td>High</td><td>40m</td></tr>
+            <tr><td>115</td><td><span class="alt-pill ok">Ready</span></td><td>Normal</td><td>-</td></tr>
+            <tr><td>506</td><td><span class="alt-pill due">Dirty</span></td><td>Urgent</td><td>--</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+    <article class="alt-panel" id="supplies" aria-labelledby="suppliesTitle">
+      <h3 id="suppliesTitle" class="alt-panel-title">Supply Requests</h3>
+      <ul class="alt-list" id="supplyList">
+        <li>Linen Packs (6) <span class="alt-time">Requested 09:10</span></li>
+        <li>Sanitizer Bottles (12) <span class="alt-time">Requested 09:05</span></li>
+        <li>Vacuum Filter (1) <span class="alt-time">Requested 08:40</span></li>
+      </ul>
+    </article>
+    <article class="alt-panel" id="staff" aria-labelledby="staffTitle">
+      <h3 id="staffTitle" class="alt-panel-title">Shift Overview</h3>
+      <ul class="alt-list" id="staffShiftList">
+        <li>Ayesha • Floor 2 <span class="alt-time">On Duty</span></li>
+        <li>Kumar • Floors 3–4 <span class="alt-time">On Duty</span></li>
+        <li>Maria • Floor 5 <span class="alt-time">Break</span></li>
+        <li>James • Reserve <span class="alt-time">Standby</span></li>
+      </ul>
+    </article>
+  </section>
+  <!-- Reports placeholder -->
+  <section id="reports" aria-labelledby="hkReportsTitle">
+    <h2 id="hkReportsTitle" class="alt-panel-title">Reports</h2>
+    <div class="alt-panel" style="margin-top:18px;">
+      <p style="margin:0;font-size:0.8rem;color:var(--alt-text-soft);">Reporting module coming soon (room turnaround time, efficiency, supply consumption).</p>
+    </div>
+  </section>
+  <footer class="alt-footer" role="contentinfo">© <span id="hkYear"></span> Rio Hotel • Housekeeping Portal</footer>
+</main>
+<div class="alt-toast-region" id="hkToastRegion" aria-live="polite" aria-atomic="false"></div>
+<script>
+(function(){
+  const yearEl=document.getElementById('hkYear');
+  const toastRegion=document.getElementById('hkToastRegion');
+  const navLinks=[...document.querySelectorAll('#hkNav .alt-nav-link')];
+  yearEl.textContent=new Date().getFullYear();
+  function showToast(msg){const d=document.createElement('div');d.className='alt-toast';d.textContent=msg;toastRegion.appendChild(d);requestAnimationFrame(()=>d.classList.add('show'));setTimeout(()=>{d.classList.remove('show');setTimeout(()=>d.remove(),320);},2600);} 
+  navLinks.forEach(l=> l.addEventListener('click',()=>{navLinks.forEach(n=>n.classList.remove('active'));l.classList.add('active');localStorage.setItem('hk_nav',l.dataset.link);}));
+  const saved=localStorage.getItem('hk_nav'); if(saved){const m=navLinks.find(n=>n.dataset.link===saved); if(m){navLinks.forEach(n=>n.classList.remove('active')); m.classList.add('active');}}
+  document.querySelectorAll('[data-quick]').forEach(btn=> btn.addEventListener('click',()=> showToast('Action: '+btn.dataset.quick)));
+  document.addEventListener('keydown',e=>{if(e.key==='/' && document.activeElement.tagName!=='INPUT'){e.preventDefault();document.getElementById('hkSearch').focus();}});
+  setTimeout(()=> showToast('Housekeeping data loaded'),400);
+})();
+</script>
+</body>
+</html>

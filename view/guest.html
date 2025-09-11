@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rio Hotel | Guest Portal</title>
+<link rel="icon" type="image/x-icon" href="../Image/RH.ico" />
+<link rel="stylesheet" href="../css/style.css?v=alt1" />
+</head>
+<body class="alt-body" data-role="guest">
+<header class="alt-topbar" role="banner">
+  <div class="alt-brand"><img src="../Image/RH.png" alt="Rio Hotel Logo" /><span>Guest Portal</span></div>
+  <nav class="alt-nav" id="guestNav" aria-label="Guest navigation">
+    <a href="#myBookings" class="alt-nav-link active" data-link="mybookings">🛎️ My Bookings</a>
+    <a href="#new" class="alt-nav-link" data-link="new">➕ New Booking</a>
+    <a href="#services" class="alt-nav-link" data-link="services">🧴 Services</a>
+    <a href="#profile" class="alt-nav-link" data-link="profile">👤 Profile</a>
+    <a href="#support" class="alt-nav-link" data-link="support">❓ Support</a>
+    <a href="../login.html" class="alt-nav-link" data-link="logout">🚪 Logout</a>
+  </nav>
+  <div class="alt-top-right">
+    <div class="alt-search" role="search"><span>🔍</span><input type="search" id="guestSearch" placeholder="Search bookings" aria-label="Search" /></div>
+    <button id="guestUserBtn" class="alt-user-btn"><span class="alt-avatar">GS</span><span class="hide-m">Guest</span></button>
+  </div>
+</header>
+<aside class="alt-rail" aria-label="Quick actions">
+  <button title="New Booking" data-quick="new-booking">➕</button>
+  <button title="Extend Stay" data-quick="extend">⏩</button>
+  <button title="Request Service" data-quick="service">🧺</button>
+  <button title="Support" data-quick="support">❓</button>
+</aside>
+<main class="alt-wrapper" tabindex="-1">
+  <section id="myBookings" aria-labelledby="guestBookingsTitle">
+    <h2 id="guestBookingsTitle" class="alt-panel-title">My Current & Upcoming Bookings</h2>
+    <div class="alt-table-wrap" style="margin-top:18px;" role="region" aria-label="My bookings table">
+      <table class="alt-table" id="guestBookingsTable">
+        <thead><tr><th>Booking ID</th><th>Room</th><th>Check-In</th><th>Check-Out</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>BK-7821</td><td>Deluxe 304</td><td>Today</td><td>Tomorrow</td><td><span class="alt-pill ok">Active</span></td></tr>
+          <tr><td>BK-7810</td><td>Standard 208</td><td>+5 Days</td><td>+7 Days</td><td><span class="alt-pill pending">Upcoming</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section id="new" aria-labelledby="guestNewTitle" style="margin-top:40px;">
+    <h2 id="guestNewTitle" class="alt-panel-title">Create New Booking</h2>
+    <div class="alt-panel" style="margin-top:18px;">
+      <form id="guestBookingForm" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;font-size:0.75rem;">
+        <div><label>Room Type<br><select name="rtype"><option>Standard</option><option>Deluxe</option><option>Executive</option><option>Suite</option></select></label></div>
+        <div><label>Arrival<br><input required type="date" name="arr" /></label></div>
+        <div><label>Nights<br><input required type="number" min="1" value="2" name="nights" /></label></div>
+        <div style="grid-column:1/-1;display:flex;gap:10px;">
+          <button type="submit" class="alt-user-btn" style="background:var(--alt-accent-grad);">Request</button>
+          <button type="reset" class="alt-user-btn" style="background:#64748b;">Reset</button>
+        </div>
+      </form>
+    </div>
+  </section>
+  <section id="services" aria-labelledby="guestServicesTitle" style="margin-top:40px;">
+    <h2 id="guestServicesTitle" class="alt-panel-title">Available Services</h2>
+    <div class="alt-panel" style="margin-top:18px;">
+      <ul class="alt-list" id="guestServicesList">
+        <li>Laundry Pickup <span class="alt-time">24/7</span></li>
+        <li>Room Service <span class="alt-time">06:00–23:00</span></li>
+        <li>Spa Access <span class="alt-time">10:00–20:00</span></li>
+        <li>Airport Shuttle <span class="alt-time">On Request</span></li>
+      </ul>
+    </div>
+  </section>
+  <section id="profile" aria-labelledby="guestProfileTitle" style="margin-top:40px;">
+    <h2 id="guestProfileTitle" class="alt-panel-title">Profile</h2>
+    <div class="alt-panel" style="margin-top:18px;">
+      <ul class="alt-list" id="guestProfileList">
+        <li>Name: Adil Khan</li>
+        <li>Loyalty Tier: Gold</li>
+        <li>Stays This Year: 7</li>
+        <li>Preferences: High floor, Late checkout</li>
+      </ul>
+    </div>
+  </section>
+  <section id="support" aria-labelledby="guestSupportTitle" style="margin:40px 0 20px 0;">
+    <h2 id="guestSupportTitle" class="alt-panel-title">Support Requests</h2>
+    <div class="alt-panel" style="margin-top:18px;">
+      <ul class="alt-list" id="guestSupportList">
+        <li>Door lock delay • Open <span class="alt-time">08:20</span></li>
+        <li>Extra pillows request • Resolved <span class="alt-time">Yesterday</span></li>
+      </ul>
+    </div>
+  </section>
+  <footer class="alt-footer" role="contentinfo">© <span id="guestYear"></span> Rio Hotel • Guest Portal</footer>
+</main>
+<div class="alt-toast-region" id="guestToastRegion" aria-live="polite" aria-atomic="false"></div>
+<script>
+(function(){
+  const yearEl=document.getElementById('guestYear');
+  const navLinks=[...document.querySelectorAll('#guestNav .alt-nav-link')];
+  const toastRegion=document.getElementById('guestToastRegion');
+  const form=document.getElementById('guestBookingForm');
+  yearEl.textContent=new Date().getFullYear();
+  function showToast(msg){const d=document.createElement('div');d.className='alt-toast';d.textContent=msg;toastRegion.appendChild(d);requestAnimationFrame(()=>d.classList.add('show'));setTimeout(()=>{d.classList.remove('show');setTimeout(()=>d.remove(),320);},2600);} 
+  navLinks.forEach(l=> l.addEventListener('click',()=>{navLinks.forEach(n=>n.classList.remove('active'));l.classList.add('active');localStorage.setItem('guest_nav',l.dataset.link);}));
+  const saved=localStorage.getItem('guest_nav'); if(saved){const m=navLinks.find(n=>n.dataset.link===saved); if(m){navLinks.forEach(n=>n.classList.remove('active')); m.classList.add('active');}}
+  document.querySelectorAll('[data-quick]').forEach(btn=> btn.addEventListener('click',()=> showToast('Action: '+btn.dataset.quick)));
+  document.addEventListener('keydown',e=>{if(e.key==='/' && document.activeElement.tagName!=='INPUT'){e.preventDefault();document.getElementById('guestSearch').focus();}});
+  form.addEventListener('submit',e=>{e.preventDefault();showToast('Request submitted'); form.reset();});
+  setTimeout(()=> showToast('Guest data loaded'),400);
+})();
+</script>
+</body>
+</html>

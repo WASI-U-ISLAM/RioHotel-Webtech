@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rio Hotel | Reception Desk</title>
+<link rel="icon" type="image/x-icon" href="../Image/RH.ico" />
+<link rel="stylesheet" href="../css/style.css?v=alt1" />
+</head>
+<body class="alt-body" data-role="reception">
+<header class="alt-topbar" role="banner">
+  <div class="alt-brand"><img src="../Image/RH.png" alt="Rio Hotel Logo" /><span>Reception</span></div>
+  <nav class="alt-nav" id="rcpNav" aria-label="Reception navigation">
+    <a href="#arrivals" class="alt-nav-link active" data-link="arrivals">🛬 Arrivals</a>
+    <a href="#departures" class="alt-nav-link" data-link="departures">🛫 Departures</a>
+    <a href="#inhouse" class="alt-nav-link" data-link="inhouse">🏨 In-House</a>
+    <a href="#create" class="alt-nav-link" data-link="create">➕ New Booking</a>
+    <a href="#payments" class="alt-nav-link" data-link="payments">💳 Payments</a>
+    <a href="#issues" class="alt-nav-link" data-link="issues">⚠️ Issues</a>
+    <a href="../login.html" class="alt-nav-link" data-link="logout">🚪 Logout</a>
+  </nav>
+  <div class="alt-top-right">
+    <div class="alt-search" role="search"><span>🔍</span><input type="search" id="rcpSearch" placeholder="Search guests / bookings" aria-label="Search" /></div>
+    <button id="rcpUserBtn" class="alt-user-btn"><span class="alt-avatar">RC</span><span class="hide-m">Reception</span></button>
+  </div>
+</header>
+<aside class="alt-rail" aria-label="Quick actions">
+  <button title="Add Booking" data-quick="add-booking">➕</button>
+  <button title="Check In" data-quick="check-in">✅</button>
+  <button title="Check Out" data-quick="check-out">📤</button>
+  <button title="Hold" data-quick="hold">⏸️</button>
+</aside>
+<main class="alt-wrapper" tabindex="-1">
+  <section id="arrivals" aria-labelledby="arrivalsTitle">
+    <h2 id="arrivalsTitle" class="alt-panel-title">Today's Arrivals</h2>
+    <div class="alt-table-wrap" style="margin-top:18px;" role="region" aria-label="Arrivals table">
+      <table class="alt-table" id="arrivalsTable">
+        <thead><tr><th>Time</th><th>Guest</th><th>Room Type</th><th>Nights</th><th>Booking ID</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>10:30</td><td>A. Rahman</td><td>Deluxe Suite</td><td>2</td><td>BK-7821</td><td><span class="alt-pill pending">Pending</span></td></tr>
+          <tr><td>11:00</td><td>S. Chen</td><td>Executive King</td><td>3</td><td>BK-7822</td><td><span class="alt-pill pending">Pending</span></td></tr>
+          <tr><td>11:45</td><td>P. Davis</td><td>Standard Twin</td><td>1</td><td>BK-7823</td><td><span class="alt-pill ok">Checked-In</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section id="departures" aria-labelledby="departuresTitle" style="margin-top:40px;">
+    <h2 id="departuresTitle" class="alt-panel-title">Departures</h2>
+    <div class="alt-table-wrap" style="margin-top:18px;" role="region" aria-label="Departures table">
+      <table class="alt-table" id="departuresTable">
+        <thead><tr><th>Time</th><th>Guest</th><th>Room</th><th>Booking ID</th><th>Checkout</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>09:00</td><td>Linda Park</td><td>601</td><td>BK-7824</td><td>Today</td><td><span class="alt-pill due">Due Out</span></td></tr>
+          <tr><td>11:30</td><td>David Kim</td><td>512</td><td>BK-7823</td><td>Tomorrow</td><td><span class="alt-pill ok">Extended</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section id="inhouse" aria-labelledby="inhouseTitle" style="margin-top:40px;">
+    <h2 id="inhouseTitle" class="alt-panel-title">In-House Guests</h2>
+    <div class="alt-table-wrap" style="margin-top:18px;" role="region" aria-label="In house table">
+      <table class="alt-table" id="inhouseTable">
+        <thead><tr><th>Guest</th><th>Room</th><th>Arrival</th><th>Departure</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Adil Khan</td><td>304</td><td>Today</td><td>Tomorrow</td><td><span class="alt-pill ok">Checked-In</span></td></tr>
+          <tr><td>Sara Lee</td><td>208</td><td>Today</td><td>Tomorrow</td><td><span class="alt-pill pending">Pending</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section id="create" aria-labelledby="newBookingTitle" style="margin-top:40px;">
+    <h2 id="newBookingTitle" class="alt-panel-title">Quick Booking</h2>
+    <div class="alt-panel" style="margin-top:18px;">
+      <form id="quickBookingForm" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;font-size:0.75rem;">
+        <div><label>Guest Name<br><input required type="text" name="guest" /></label></div>
+        <div><label>Room Type<br><select name="rtype"><option>Standard</option><option>Deluxe</option><option>Executive</option><option>Suite</option></select></label></div>
+        <div><label>Nights<br><input required type="number" min="1" value="1" name="nights" /></label></div>
+        <div><label>Arrival<br><input required type="date" name="arr" /></label></div>
+        <div style="grid-column:1/-1;display:flex;gap:10px;">
+          <button type="submit" class="alt-user-btn" style="background:var(--alt-accent-grad);">Save</button>
+          <button type="reset" class="alt-user-btn" style="background:#64748b;">Reset</button>
+        </div>
+      </form>
+    </div>
+  </section>
+  <section id="payments" aria-labelledby="paymentsTitle" style="margin-top:40px;">
+    <h2 id="paymentsTitle" class="alt-panel-title">Recent Payments</h2>
+    <div class="alt-panel" style="margin-top:18px;">
+      <ul class="alt-list" id="paymentsList">
+        <li>Invoice #782 • $240 • Card <span class="alt-time">09:12</span></li>
+        <li>Invoice #779 • $180 • Cash <span class="alt-time">08:50</span></li>
+        <li>Invoice #778 • $460 • Card <span class="alt-time">08:44</span></li>
+      </ul>
+    </div>
+  </section>
+  <section id="issues" aria-labelledby="issuesTitle" style="margin:40px 0 20px 0;">
+    <h2 id="issuesTitle" class="alt-panel-title">Guest Issues</h2>
+    <div class="alt-panel" style="margin-top:18px;">
+      <ul class="alt-list" id="issuesList">
+        <li>Room 512 – Wi-Fi intermittent <span class="alt-time">Open</span></li>
+        <li>Room 208 – TV not working <span class="alt-time">Assigned</span></li>
+      </ul>
+    </div>
+  </section>
+  <footer class="alt-footer" role="contentinfo">© <span id="rcpYear"></span> Rio Hotel • Reception Desk</footer>
+</main>
+<div class="alt-toast-region" id="rcpToastRegion" aria-live="polite" aria-atomic="false"></div>
+<script>
+(function(){
+  const yearEl=document.getElementById('rcpYear');
+  const navLinks=[...document.querySelectorAll('#rcpNav .alt-nav-link')];
+  const toastRegion=document.getElementById('rcpToastRegion');
+  const form=document.getElementById('quickBookingForm');
+  yearEl.textContent=new Date().getFullYear();
+  function showToast(msg){const d=document.createElement('div');d.className='alt-toast';d.textContent=msg;toastRegion.appendChild(d);requestAnimationFrame(()=>d.classList.add('show'));setTimeout(()=>{d.classList.remove('show');setTimeout(()=>d.remove(),320);},2600);} 
+  navLinks.forEach(l=> l.addEventListener('click',()=>{navLinks.forEach(n=>n.classList.remove('active'));l.classList.add('active');localStorage.setItem('rcp_nav',l.dataset.link);}));
+  const saved=localStorage.getItem('rcp_nav'); if(saved){const m=navLinks.find(n=>n.dataset.link===saved); if(m){navLinks.forEach(n=>n.classList.remove('active')); m.classList.add('active');}}
+  document.querySelectorAll('[data-quick]').forEach(btn=> btn.addEventListener('click',()=> showToast('Action: '+btn.dataset.quick)));
+  document.addEventListener('keydown',e=>{if(e.key==='/' && document.activeElement.tagName!=='INPUT'){e.preventDefault();document.getElementById('rcpSearch').focus();}});
+  form.addEventListener('submit',e=>{e.preventDefault();showToast('Booking created'); form.reset();});
+  setTimeout(()=> showToast('Reception data loaded'),400);
+})();
+</script>
+</body>
+</html>

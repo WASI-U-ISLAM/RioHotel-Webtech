@@ -74,6 +74,8 @@
         var params = new URLSearchParams(window.location.search);
         if (params.get('error') === 'invalid') {
             showPopup('Invalid username or password.');
+        } else if (params.get('error') === 'otp') {
+            showPopup('Invalid or expired OTP. Please login again.');
         }
     };
     </script>

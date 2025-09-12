@@ -1,16 +1,39 @@
 <?php
 // Simple database connection (auto create database + users table)
+// Basic DB configuration (adjust if you changed XAMPP defaults)
 $DB_HOST = 'localhost';
 $DB_USER = 'root';
 $DB_PASS = ''; // Default XAMPP root password (empty)
 $DB_NAME = 'riohotel';
+$DB_PORT = 3306; // Change if MySQL runs on another port
 
-// Connect (create DB if missing)
-$mysqli = new mysqli($DB_HOST, $DB_USER, $DB_PASS);
-if ($mysqli->connect_errno) {
+// Helper to output a friendly error and stop
+function db_fail($msg, $detail = '') {
     http_response_code(500);
-    echo 'Database server connection failed: ' . htmlspecialchars($mysqli->connect_error);
+    echo '<h3 style="font-family:Arial;">Database Connection Error</h3>';
+    echo '<p style="font-family:Arial;">' . htmlspecialchars($msg) . '</p>';
+    if ($detail !== '') {
+        echo '<pre style="background:#f5f5f5;padding:8px;border:1px solid #ddd;white-space:pre-wrap;">' . htmlspecialchars($detail) . '</pre>';
+    }
+    echo '<ol style="font-family:Arial;font-size:14px;line-height:1.4;">'
+        .'<li>Open XAMPP Control Panel and ensure MySQL is <strong>Running</strong>.</li>'
+        .'<li>If port conflict, change MySQL port or stop conflicting service.</li>'
+        .'<li>If you changed the port, update $DB_PORT in php/db.php.</li>'
+        .'<li>If you set a root password, update $DB_PASS accordingly.</li>'
+        .'<li>Restart Apache after changes.</li>'
+        .'</ol>';
     exit;
+}
+
+// Attempt primary connection
+$mysqli = @new mysqli($DB_HOST, $DB_USER, $DB_PASS, '', $DB_PORT);
+if ($mysqli->connect_errno) {
+    // Fallback: try explicit 127.0.0.1 if localhost failed (IPv6/DNS edge cases)
+    $fallback = @new mysqli('127.0.0.1', $DB_USER, $DB_PASS, '', $DB_PORT);
+    if ($fallback->connect_errno) {
+        db_fail('Could not connect to MySQL server.', $fallback->connect_error);
+    }
+    $mysqli = $fallback; // use fallback connection
 }
 $mysqli->set_charset('utf8mb4');
 

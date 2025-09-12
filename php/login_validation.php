@@ -31,25 +31,18 @@ if (!$user || !password_verify($password, $user['password_hash'])) {
     exit();
 }
 
-$_SESSION['user_id'] = $user['id'];
-$_SESSION['username'] = $user['username'];
-$_SESSION['role'] = $user['role'];
+// Create OTP (6 digits)
+$otp = random_int(100000, 999999);
+$_SESSION['otp_user_id'] = $user['id'];
+$_SESSION['otp_username'] = $user['username'];
+$_SESSION['otp_role'] = $user['role'];
+$_SESSION['otp_code'] = (string)$otp;
+$_SESSION['otp_expires'] = time() + 300; // 5 minutes
 
-setcookie('rh_username', rawurlencode($user['username']), time()+3600, '/');
+// For demo: store display name cookie early so otp page can show user
+setcookie('rh_username', rawurlencode($user['username']), time()+900, '/');
 
-switch ($user['role']) {
-    case 'admin':
-        header('Location: ../view/admin_dashboard.html');
-        break;
-    case 'housekeeper':
-        header('Location: ../view/housekeeping.html');
-        break;
-    case 'receptionist':
-        header('Location: ../view/receptionist.html');
-        break;
-    default: // guest
-        header('Location: ../view/guest.html');
-        break;
-}
+// (In real system: send OTP via email/SMS. For now redirect with a flag to show it.)
+header('Location: ../view/otp.html?show=1');
 exit();
 ?>

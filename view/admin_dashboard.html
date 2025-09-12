@@ -1,11 +1,13 @@
+<!-- Auth guard PHP removed: static HTML version. Username injected via JS cookie. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Rio Hotel | Admin Dashboard (Alt Pattern)</title>
+<title>Rio Hotel | Admin Dashboard</title>
 <link rel="icon" type="image/x-icon" href="../Image/RH.ico" />
 <link rel="stylesheet" href="../css/style.css?v=alt1" />
+<script src="../js/portal.js" defer></script>
 </head>
 <body class="alt-body">
 <header class="alt-topbar" role="banner">
@@ -18,10 +20,11 @@
         <a href="#finance" class="alt-nav-link" data-link="finance">💳 Finance</a>
         <a href="#reports" class="alt-nav-link" data-link="reports">📊 Reports</a>
         <a href="#settings" class="alt-nav-link" data-link="settings">⚙️ Settings</a>
+        <a href="../php/logout.php" class="alt-nav-link" data-link="logout">🚪 Logout</a>
     </nav>
     <div class="alt-top-right">
         <div class="alt-search" role="search"><span>🔍</span><input type="search" id="altSearch" placeholder="Search ( / )" aria-label="Search" /></div>
-        <button id="altUserBtn" class="alt-user-btn"><span class="alt-avatar">AD</span><span class="hide-m">Admin</span></button>
+    <button id="altUserBtn" class="alt-user-btn"><span class="alt-avatar">AD</span><span class="hide-m" id="adminName"></span></button>
     </div>
 </header>
 <aside class="alt-rail" aria-label="Quick actions">
@@ -51,25 +54,8 @@
             </table>
         </div>
     </section>
-    <footer class="alt-footer" role="contentinfo">© <span id="altYear"></span> Rio Hotel • Alt Pattern</footer>
+    <footer class="alt-footer" role="contentinfo">© <span id="altYear"></span> Rio Hotel • Admin Dashboard</footer>
 </main>
-<div class="alt-toast-region" id="altToastRegion" aria-live="polite" aria-atomic="false"></div>
-<script>
-(function(){
-  const html=document.documentElement;
-  const yearEl=document.getElementById('altYear');
-    const navLinks=[...document.querySelectorAll('.alt-nav-link')];
-  const toastRegion=document.getElementById('altToastRegion');
-  yearEl.textContent=new Date().getFullYear();
-  function showToast(msg){const d=document.createElement('div');d.className='alt-toast';d.textContent=msg;toastRegion.appendChild(d);requestAnimationFrame(()=>d.classList.add('show'));setTimeout(()=>{d.classList.remove('show');setTimeout(()=>d.remove(),320);},3000);} 
-  navLinks.forEach(l=>l.addEventListener('click',()=>{navLinks.forEach(n=>n.classList.remove('active'));l.classList.add('active');localStorage.setItem('rh_alt_nav',l.dataset.link);}));
-  const savedNav=localStorage.getItem('rh_alt_nav');
-  if(savedNav){const match=navLinks.find(n=>n.dataset.link===savedNav); if(match){navLinks.forEach(n=>n.classList.remove('active'));match.classList.add('active');}}
-  document.querySelectorAll('[data-quick]').forEach(btn=> btn.addEventListener('click',()=> showToast('Quick: '+btn.dataset.quick)));
-  document.addEventListener('keydown',e=>{if(e.key==='/' && document.activeElement.tagName!=='INPUT'){e.preventDefault();document.getElementById('altSearch').focus();}});
-        // Metrics section removed; skipping animation init
-        setTimeout(()=>{showToast('Dashboard ready');},300);
-})();
-</script>
+<div class="alt-toast-region" aria-live="polite" aria-atomic="false"></div>
 </body>
 </html>

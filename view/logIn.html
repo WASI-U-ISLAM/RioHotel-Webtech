@@ -74,8 +74,16 @@
         var params = new URLSearchParams(window.location.search);
         if (params.get('error') === 'invalid') {
             showPopup('Invalid username or password.');
-        } else if (params.get('error') === 'otp') {
-            showPopup('Invalid or expired OTP. Please login again.');
+        } else if (params.get('error') === 'auth') {
+            showPopup('Please login to continue.');
+        } else if (params.get('error') === 'denied') {
+            showPopup('Access denied for your role.');
+        } else if (params.get('error') === 'server') {
+            showPopup('Server error. Try again later.');
+        } else if (params.get('registered') === '1') {
+            showPopup('Registration successful. Please login.');
+        } else if (params.get('loggedout') === '1') {
+            showPopup('You have been logged out.');
         }
     };
     </script>

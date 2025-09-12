@@ -1,3 +1,4 @@
+<!-- Auth guard PHP removed: static HTML version. Username injected via JS cookie. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,7 @@
 <title>Rio Hotel | Housekeeping Portal</title>
 <link rel="icon" type="image/x-icon" href="../Image/RH.ico" />
 <link rel="stylesheet" href="../css/style.css?v=alt1" />
+<script src="../js/portal.js" defer></script>
 </head>
 <body class="alt-body" data-role="housekeeping">
 <header class="alt-topbar" role="banner">
@@ -16,11 +18,11 @@
     <a href="#supplies" class="alt-nav-link" data-link="supplies">📦 Supplies</a>
     <a href="#staff" class="alt-nav-link" data-link="staff">👥 Staff</a>
     <a href="#reports" class="alt-nav-link" data-link="reports">📊 Reports</a>
-    <a href="../login.html" class="alt-nav-link" data-link="logout">🚪 Logout</a>
+    <a href="../php/logout.php" class="alt-nav-link" data-link="logout">🚪 Logout</a>
   </nav>
   <div class="alt-top-right">
     <div class="alt-search" role="search"><span>🔍</span><input type="search" id="hkSearch" placeholder="Search tasks" aria-label="Search" /></div>
-    <button id="hkUserBtn" class="alt-user-btn"><span class="alt-avatar">HK</span><span class="hide-m">Lead</span></button>
+  <button id="hkUserBtn" class="alt-user-btn"><span class="alt-avatar">HK</span><span class="hide-m" id="hkName"></span></button>
   </div>
 </header>
 <aside class="alt-rail" aria-label="Quick actions">
@@ -30,7 +32,6 @@
   <button title="Order Supplies" data-quick="order">📦</button>
 </aside>
 <main class="alt-wrapper" tabindex="-1">
-  <!-- Task Queue -->
   <section id="tasks" class="alt-panels" aria-labelledby="hkTasksTitle">
     <h2 id="hkTasksTitle" class="sr-only">Task Queue</h2>
     <article class="alt-panel" aria-labelledby="taskQueueTitle">
@@ -74,7 +75,6 @@
       </ul>
     </article>
   </section>
-  <!-- Reports placeholder -->
   <section id="reports" aria-labelledby="hkReportsTitle">
     <h2 id="hkReportsTitle" class="alt-panel-title">Reports</h2>
     <div class="alt-panel" style="margin-top:18px;">
@@ -83,20 +83,6 @@
   </section>
   <footer class="alt-footer" role="contentinfo">© <span id="hkYear"></span> Rio Hotel • Housekeeping Portal</footer>
 </main>
-<div class="alt-toast-region" id="hkToastRegion" aria-live="polite" aria-atomic="false"></div>
-<script>
-(function(){
-  const yearEl=document.getElementById('hkYear');
-  const toastRegion=document.getElementById('hkToastRegion');
-  const navLinks=[...document.querySelectorAll('#hkNav .alt-nav-link')];
-  yearEl.textContent=new Date().getFullYear();
-  function showToast(msg){const d=document.createElement('div');d.className='alt-toast';d.textContent=msg;toastRegion.appendChild(d);requestAnimationFrame(()=>d.classList.add('show'));setTimeout(()=>{d.classList.remove('show');setTimeout(()=>d.remove(),320);},2600);} 
-  navLinks.forEach(l=> l.addEventListener('click',()=>{navLinks.forEach(n=>n.classList.remove('active'));l.classList.add('active');localStorage.setItem('hk_nav',l.dataset.link);}));
-  const saved=localStorage.getItem('hk_nav'); if(saved){const m=navLinks.find(n=>n.dataset.link===saved); if(m){navLinks.forEach(n=>n.classList.remove('active')); m.classList.add('active');}}
-  document.querySelectorAll('[data-quick]').forEach(btn=> btn.addEventListener('click',()=> showToast('Action: '+btn.dataset.quick)));
-  document.addEventListener('keydown',e=>{if(e.key==='/' && document.activeElement.tagName!=='INPUT'){e.preventDefault();document.getElementById('hkSearch').focus();}});
-  setTimeout(()=> showToast('Housekeeping data loaded'),400);
-})();
-</script>
+<div class="alt-toast-region" aria-live="polite" aria-atomic="false"></div>
 </body>
 </html>

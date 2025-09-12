@@ -143,7 +143,11 @@
     window.onload = function() {
         var params = new URLSearchParams(window.location.search);
         if (params.get('error') === 'invalid') {
-            showPopup('Registration failed. Please check your details.');
+            showPopup('Invalid input. Fix errors and retry.');
+        } else if (params.get('error') === 'exists') {
+            showPopup('Username or email already exists.');
+        } else if (params.get('error') === 'server') {
+            showPopup('Server error. Try again later.');
         }
     };
     </script>

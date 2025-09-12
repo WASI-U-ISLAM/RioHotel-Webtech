@@ -1,40 +1,55 @@
 <?php
-$valid_username = "admin";
-$valid_password = "1234";
-
 session_start();
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    $users = [
-        ["username" => "admin", "password" => "1234", "role" => "admin"],
-        ["username" => "guest", "password" => "guestpass", "role" => "guest"],
-        ["username" => "housekeeper", "password" => "housepass", "role" => "housekeeper"],
-        ["username" => "receptionist", "password" => "receppass", "role" => "receptionist"]
-    ];
-    $found = false;
-    foreach ($users as $user) {
-        if ($username === $user["username"] && $password === $user["password"]) {
-            $found = true;
-            $_SESSION["username"] = $username;
-            $_SESSION["role"] = $user["role"];
-            // Generate OTP
-            $otp = rand(100000, 999999);
-            $_SESSION["otp"] = $otp;
-            echo "<h2>Enter the OTP sent to you (for demo: $otp)</h2>";
-            echo '<form method="post" action="otp_validation.php">';
-            echo '<input type="text" name="otp" placeholder="Enter OTP" required />';
-            echo '<input type="submit" value="Verify OTP" />';
-            echo '</form>';
-            exit();
-        }
-    }
-    if (!$found) {
-        header("Location: ../view/logIn.html?error=invalid");
-        exit();
-    }
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: ../view/login.html');
+    exit();
 }
-else {
-    echo "Please submit the form.";
+
+require_once __DIR__ . '/db.php';
+
+$username = trim($_POST['username'] ?? '');
+$password = $_POST['password'] ?? '';
+
+if ($username === '' || $password === '') {
+    header('Location: ../view/login.html?error=invalid');
+    exit();
 }
+
+$stmt = $mysqli->prepare('SELECT id, username, password_hash, role FROM users WHERE username = ? LIMIT 1');
+if (!$stmt) {
+    header('Location: ../view/login.html?error=server');
+    exit();
+}
+$stmt->bind_param('s', $username);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+$stmt->close();
+
+if (!$user || !password_verify($password, $user['password_hash'])) {
+    header('Location: ../view/login.html?error=invalid');
+    exit();
+}
+
+$_SESSION['user_id'] = $user['id'];
+$_SESSION['username'] = $user['username'];
+$_SESSION['role'] = $user['role'];
+
+setcookie('rh_username', rawurlencode($user['username']), time()+3600, '/');
+
+switch ($user['role']) {
+    case 'admin':
+        header('Location: ../view/admin_dashboard.html');
+        break;
+    case 'housekeeper':
+        header('Location: ../view/housekeeping.html');
+        break;
+    case 'receptionist':
+        header('Location: ../view/receptionist.html');
+        break;
+    default: // guest
+        header('Location: ../view/guest.html');
+        break;
+}
+exit();
 ?>

@@ -39,10 +39,9 @@ $_SESSION['otp_role'] = $user['role'];
 $_SESSION['otp_code'] = (string)$otp;
 $_SESSION['otp_expires'] = time() + 300; // 5 minutes
 
-// For demo: store display name cookie early so otp page can show user
+
 setcookie('rh_username', rawurlencode($user['username']), time()+900, '/');
 
-// (In real system: send OTP via email/SMS. For now redirect with a flag to show it.)
 header('Location: ../view/otp.html?show=1');
 exit();
 ?>

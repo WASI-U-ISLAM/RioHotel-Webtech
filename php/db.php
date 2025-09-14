@@ -1,12 +1,10 @@
 <?php
-// XAMPP MySQL connection settings
 $DB_HOST = 'localhost';
 $DB_USER = 'root';
-$DB_PASS = ''; // XAMPP default: empty password
+$DB_PASS = ''; 
 $DB_NAME = 'riohotel';
 $DB_PORT = 3306;
 
-// Create connection
 $mysqli = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, $DB_PORT);
 
 // Check connection

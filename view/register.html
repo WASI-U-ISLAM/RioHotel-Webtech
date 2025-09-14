@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+        <link rel="stylesheet" href="../css/style.css">
+    </head>
+    <body>
+        <div class="login-container">
+            <h2>Register</h2>
+            <form id="registerForm" action="../php/reg_validation.php" method="post">
+                <div class="input-group">
+                   <label for="username">Username:</label>
+                   <input type="text" id="username" name="username">
+                   <div id="usernameError" class="field-error" style="display:none;color:#e74c3c;font-size:0.95em;margin-top:4px;"></div>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email">
+                    <div id="emailError" class="field-error" style="display:none;color:#e74c3c;font-size:0.95em;margin-top:4px;"></div>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password">
+                    <div id="passwordError" class="field-error" style="display:none;color:#e74c3c;font-size:0.95em;margin-top:4px;"></div>
+                </div>
+                <div class="input-group">
+                    <label for="confirm_password">Confirm Password:</label>
+                    <input type="password" id="confirm_password" name="confirm_password">
+                    <div id="confirmPasswordError" class="field-error" style="display:none;color:#e74c3c;font-size:0.95em;margin-top:4px;"></div>
+                </div>
+                <div class="input-group">
+                    <label for="role">Role:</label>
+                    <select id="role" name="role">
+                        <option value="">Select Role</option>
+                        <option value="guest">Guest</option>
+                        <option value="admin">Admin</option>
+                        <option value="housekeeper">Housekeeper</option>
+                        <option value="receptionist">Receptionist</option>
+                    </select>
+                    <div id="roleError" class="field-error" style="display:none;color:#e74c3c;font-size:0.95em;margin-top:4px;"></div>
+                </div>
+                <div class="input-group">
+                    <input type="submit" value="Register">
+                </div>
+            </form>
+            <div id="popupBar" class="popup-bar" style="display:none;"></div>
+        </div>
+    <script>
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+        var usernameInput = document.getElementById('username');
+        var emailInput = document.getElementById('email');
+        var passwordInput = document.getElementById('password');
+        var confirmPasswordInput = document.getElementById('confirm_password');
+        var roleInput = document.getElementById('role');
+        var usernameError = document.getElementById('usernameError');
+        var emailError = document.getElementById('emailError');
+        var passwordError = document.getElementById('passwordError');
+        var confirmPasswordError = document.getElementById('confirmPasswordError');
+        var roleError = document.getElementById('roleError');
+        var hasError = false;
+
+        // Username
+        if (!usernameInput.value.trim()) {
+            usernameInput.style.border = '2px solid #e74c3c';
+            usernameError.textContent = 'Username is required.';
+            usernameError.style.display = 'block';
+            hasError = true;
+        } else {
+            usernameInput.style.border = '';
+            usernameError.textContent = '';
+            usernameError.style.display = 'none';
+        }
+        // Email
+        if (!emailInput.value.trim()) {
+            emailInput.style.border = '2px solid #e74c3c';
+            emailError.textContent = 'Email is required.';
+            emailError.style.display = 'block';
+            hasError = true;
+        } else if (!/^\S+@\S+\.\S+$/.test(emailInput.value.trim())) {
+            emailInput.style.border = '2px solid #e74c3c';
+            emailError.textContent = 'Enter a valid email address.';
+            emailError.style.display = 'block';
+            hasError = true;
+        } else {
+            emailInput.style.border = '';
+            emailError.textContent = '';
+            emailError.style.display = 'none';
+        }
+        // Password
+        if (!passwordInput.value.trim()) {
+            passwordInput.style.border = '2px solid #e74c3c';
+            passwordError.textContent = 'Password is required.';
+            passwordError.style.display = 'block';
+            hasError = true;
+        } else {
+            passwordInput.style.border = '';
+            passwordError.textContent = '';
+            passwordError.style.display = 'none';
+        }
+        // Confirm Password
+        if (!confirmPasswordInput.value.trim()) {
+            confirmPasswordInput.style.border = '2px solid #e74c3c';
+            confirmPasswordError.textContent = 'Please confirm your password.';
+            confirmPasswordError.style.display = 'block';
+            hasError = true;
+        } else if (confirmPasswordInput.value !== passwordInput.value) {
+            confirmPasswordInput.style.border = '2px solid #e74c3c';
+            confirmPasswordError.textContent = 'Passwords do not match.';
+            confirmPasswordError.style.display = 'block';
+            hasError = true;
+        } else {
+            confirmPasswordInput.style.border = '';
+            confirmPasswordError.textContent = '';
+            confirmPasswordError.style.display = 'none';
+        }
+        // Role
+        if (!roleInput.value) {
+            roleInput.style.border = '2px solid #e74c3c';
+            roleError.textContent = 'Please select a role.';
+            roleError.style.display = 'block';
+            hasError = true;
+        } else {
+            roleInput.style.border = '';
+            roleError.textContent = '';
+            roleError.style.display = 'none';
+        }
+
+        if (hasError) {
+            e.preventDefault();
+            showPopup('Please fill all fields correctly.');
+        }
+    });
+
+    function showPopup(message) {
+        var popup = document.getElementById('popupBar');
+        popup.textContent = message;
+        popup.style.display = 'block';
+        setTimeout(function() {
+            popup.style.display = 'none';
+        }, 2500);
+    }
+
+    window.onload = function() {
+        var params = new URLSearchParams(window.location.search);
+        if (params.get('error') === 'invalid') {
+            showPopup('Invalid input. Fix errors and retry.');
+        } else if (params.get('error') === 'exists') {
+            showPopup('Username or email already exists.');
+        } else if (params.get('error') === 'server') {
+            showPopup('Server error. Try again later.');
+        }
+    };
+    </script>
+    </body>
+</html>

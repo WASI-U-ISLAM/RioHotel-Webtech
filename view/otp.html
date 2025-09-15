@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Enter OTP</title>
-  <link rel="stylesheet" href="../css/style.css">
+<title>Enter OTP</title>
+<link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="otp-page-wrapper">
-  <main class="otp-box" role="main" aria-labelledby="otpHeading">
-    <h2 id="otpHeading">Two Step Verification</h2>
-    <p class="otp-lead">We sent a 6 digit code (demo shows it below).</p>
-    <div id="demoOtp" aria-live="polite" style="display:none"></div>
-    <form id="otpForm" action="../php/otp_validation.php" method="post" novalidate>
-      <div class="otp-field-group">
-        <label for="otpInput">Verification Code</label>
-        <input type="text" name="otp" id="otpInput" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="123456" autocomplete="one-time-code" aria-describedby="otpError otpSuccess expiresHint" required />
-      </div>
-      <div class="otp-status-area" aria-live="assertive">
-        <div class="msg" id="otpError">Invalid or expired code.</div>
-        <div class="msg success" id="otpSuccess">Code valid! Redirecting...</div>
-      </div>
-      <button type="submit" aria-label="Verify code">Verify Code</button>
-      <a href="login.html" class="back-link" aria-label="Back to login page">Back to Login</a>
-    </form>
-    <div class="otp-hint" id="expiresHint" aria-live="polite"></div>
-  </main>
+<main class="otp-box" role="main" aria-labelledby="otpHeading">
+<h2 id="otpHeading">Two Step Verification</h2>
+<p class="otp-lead">We sent a 6 digit code (demo shows it below).</p>
+<div id="demoOtp" aria-live="polite" style="display:none"></div>
+<form id="otpForm" action="../php/otp_validation.php" method="post" novalidate>
+<div class="otp-field-group">
+<label for="otpInput">Verification Code</label>
+<input type="text" name="otp" id="otpInput" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="123456" autocomplete="one-time-code" aria-describedby="otpError otpSuccess expiresHint" required />
+</div>
+<div class="otp-status-area" aria-live="assertive">
+<div class="msg" id="otpError">Invalid or expired code.</div>
+<div class="msg success" id="otpSuccess">Code valid! Redirecting...</div>
+</div>
+<button type="submit" aria-label="Verify code">Verify Code</button>
+<a href="login.html" class="back-link" aria-label="Back to login page">Back to Login</a>
+</form>
+<div class="otp-hint" id="expiresHint" aria-live="polite"></div>
+</main>
 <script>
 (function(){
   const params=new URLSearchParams(location.search);

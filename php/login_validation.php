@@ -21,7 +21,7 @@ function render_login_form($oldUsername, $errors) {
     $pClass = isset($errors['password']) ? 'invalid' : '';
     $uErr = isset($errors['username']) ? '<div class="error-text">'.htmlspecialchars($errors['username']).'</div>' : '';
     $pErr = isset($errors['password']) ? '<div class="error-text">'.htmlspecialchars($errors['password']).'</div>' : '';
-    // TODO: Add HTML output for login form
+
 }
 
 if (!empty($errors)) {

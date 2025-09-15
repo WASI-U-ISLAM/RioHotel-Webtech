@@ -1,4 +1,3 @@
-<!-- Auth guard PHP removed: static HTML version. Username will be injected via JS from cookie -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,14 +25,14 @@
 </header>
 <main class="alt-wrapper">
   <section id="myBookings">
-    <h2 id="guestBookingsTitle" class="alt-panel-title">My Current & Upcoming Bookings</h2>
+  <h2 id="guestBookingsTitle" class="alt-panel-title">My Current & Upcoming Bookings</h2>
   <div class="alt-table-wrap" style="margin-top:18px;" role="region">
-      <table class="alt-table" id="guestBookingsTable">
-        <thead><tr><th>Booking ID</th><th>Room</th><th>Check-In</th><th>Check-Out</th><th>Status</th></tr></thead>
-        <tbody>
-          <tr><td>BK-7821</td><td>Deluxe 304</td><td>Today</td><td>Tomorrow</td><td><span class="alt-pill ok">Active</span></td></tr>
-          <tr><td>BK-7810</td><td>Standard 208</td><td>+5 Days</td><td>+7 Days</td><td><span class="alt-pill pending">Upcoming</span></td></tr>
-        </tbody>
+  <table class="alt-table" id="guestBookingsTable">
+    <thead><tr><th>Booking ID</th><th>Room</th><th>Check-In</th><th>Check-Out</th><th>Status</th></tr></thead>
+      <tbody>
+      <tr><td>BK-7821</td><td>Deluxe 304</td><td>Today</td><td>Tomorrow</td><td><span class="alt-pill ok">Active</span></td></tr>
+      <tr><td>BK-7810</td><td>Standard 208</td><td>+5 Days</td><td>+7 Days</td><td><span class="alt-pill pending">Upcoming</span></td></tr>
+      </tbody>
       </table>
     </div>
   </section>
@@ -45,8 +44,8 @@
         <div><label>Arrival<br><input required type="date" name="arr" /></label></div>
         <div><label>Nights<br><input required type="number" min="1" value="2" name="nights" /></label></div>
         <div style="grid-column:1/-1;display:flex;gap:10px;">
-          <button type="submit" class="alt-user-btn" style="background:var(--alt-accent-grad);">Request</button>
-          <button type="reset" class="alt-user-btn" style="background:#64748b;">Reset</button>
+        <button type="submit" class="alt-user-btn" style="background:var(--alt-accent-grad);">Request</button>
+        <button type="reset" class="alt-user-btn" style="background:#64748b;">Reset</button>
         </div>
       </form>
     </div>
@@ -66,7 +65,7 @@
     <h2 id="guestProfileTitle" class="alt-panel-title">Profile</h2>
     <div class="alt-panel" style="margin-top:18px;">
       <ul class="alt-list" id="guestProfileList">
-  <li>Name: <span id="guestNameProfile"></span></li>
+        <li>Name: <span id="guestNameProfile"></span></li>
         <li>Loyalty Tier: Gold</li>
         <li>Stays This Year: 7</li>
         <li>Preferences: High floor, Late checkout</li>

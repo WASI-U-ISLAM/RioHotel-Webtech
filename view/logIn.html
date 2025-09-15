@@ -1,91 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Login Page</title>
-        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/style.css" />
     </head>
     <body>
-    <div class="login-container">
-    <h2>LOG-IN</h2>
-    <form id="loginForm" action="../php/login_validation.php" method="POST">
-        <div class="input-group">
-            <label for="username">Username :</label>
-            <input type="text" name="username" id="username">
-            <div id="usernameError" class="field-error" style="display:none;color:#e74c3c;font-size:0.95em;margin-top:4px;"></div>
+        <div class="login-container">
+            <h2>LOG-IN</h2>
+            <form id="loginForm" action="../php/login_validation.php" method="POST">
+                <div class="input-group">
+                    <label for="username">Username :</label>
+                    <input type="text" name="username" id="username" />
+                    <div id="usernameError" class="field-error" style="display:none;color:#e74c3c;font-size:0.95em;margin-top:4px;"></div>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password :</label>
+                    <input type="password" name="password" id="password" />
+                    <div id="passwordError" class="field-error" style="display:none;color:#e74c3c;font-size:0.95em;margin-top:4px;"></div>
+                </div>
+                <button type="submit">Login</button>
+                <div class="input-group">
+                    <p>Don't have an account? <a href="register.html">Register here</a></p>
+                </div>
+            </form>
         </div>
-        <div class="input-group">
-            <label for="password">Password :</label>
-                <input type="password" name="password" id="password">
-                <div id="passwordError" class="field-error" style="display:none;color:#e74c3c;font-size:0.95em;margin-top:4px;"></div>
-        </div>
-        <button type="submit" name="ogin">Login</button>
-        <div class="input-group">
-            <p>Don't have an account? <a href="register.html">Register here</a></p>
-        </div>
-    </form>
-    <div id="popupBar" class="popup-bar" style="display:none;"></div>
-    <script>
-    // Show popup for empty fields
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-        var usernameInput = document.getElementById('username');
-        var passwordInput = document.getElementById('password');
-        var usernameError = document.getElementById('usernameError');
-        var passwordError = document.getElementById('passwordError');
-        var username = usernameInput.value.trim();
-        var password = passwordInput.value.trim();
-        var hasError = false;
-        if (!username) {
-            usernameInput.style.border = '2px solid #e74c3c';
-            usernameError.textContent = 'Username is required.';
-            usernameError.style.display = 'block';
-            hasError = true;
-        } else {
-            usernameInput.style.border = '';
-            usernameError.textContent = '';
-            usernameError.style.display = 'none';
-        }
-        if (!password) {
-            passwordInput.style.border = '2px solid #e74c3c';
-            passwordError.textContent = 'Password is required.';
-            passwordError.style.display = 'block';
-            hasError = true;
-        } else {
-            passwordInput.style.border = '';
-            passwordError.textContent = '';
-            passwordError.style.display = 'none';
-        }
-        if (hasError) {
-            e.preventDefault();
-            showPopup('Please enter both username and password.');
-        }
-    });
-
-    // Show popup for invalid credentials
-    function showPopup(message) {
-        var popup = document.getElementById('popupBar');
-        popup.textContent = message;
-        popup.style.display = 'block';
-        setTimeout(function() {
-            popup.style.display = 'none';
-        }, 2500);
-    }
-
-    window.onload = function() {
-        var params = new URLSearchParams(window.location.search);
-        if (params.get('error') === 'invalid') {
-            showPopup('Invalid username or password.');
-        } else if (params.get('error') === 'auth') {
-            showPopup('Please login to continue.');
-        } else if (params.get('error') === 'denied') {
-            showPopup('Access denied for your role.');
-        } else if (params.get('error') === 'server') {
-            showPopup('Server error. Try again later.');
-        } else if (params.get('registered') === '1') {
-            showPopup('Registration successful. Please login.');
-        } else if (params.get('loggedout') === '1') {
-            showPopup('You have been logged out.');
-        }
-    };
-    </script>
     </body>
 </html>

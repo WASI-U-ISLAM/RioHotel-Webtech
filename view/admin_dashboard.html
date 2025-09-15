@@ -1,4 +1,3 @@
-<!-- Auth guard PHP removed: static HTML version. Username injected via JS cookie. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,54 +6,47 @@
 <title>Rio Hotel | Admin Dashboard</title>
 <link rel="icon" type="image/x-icon" href="../Image/RH.ico" />
 <link rel="stylesheet" href="../css/style.css?v=alt1" />
-<script src="../js/portal.js" defer></script>
 </head>
 <body class="alt-body">
 <header class="alt-topbar" role="banner">
-    <div class="alt-brand"><img src="../Image/RH.png" alt="Rio Hotel Logo" /><span>Rio Hotel Admin</span></div>
-    <nav class="alt-nav" id="altPrimaryNav" aria-label="Primary navigation">
-        <a href="#dash" class="alt-nav-link active" data-link="dash">🏠 Dashboard</a>
-        <a href="#bookings" class="alt-nav-link" data-link="bookings">🛎️ Bookings</a>
-        <a href="#rooms" class="alt-nav-link" data-link="rooms">🛏️ Rooms</a>
-        <a href="#housekeeping" class="alt-nav-link" data-link="housekeeping">🧹 Housekeeping</a>
-        <a href="#finance" class="alt-nav-link" data-link="finance">💳 Finance</a>
-        <a href="#reports" class="alt-nav-link" data-link="reports">📊 Reports</a>
-        <a href="#settings" class="alt-nav-link" data-link="settings">⚙️ Settings</a>
-        <a href="../php/logout.php" class="alt-nav-link" data-link="logout">🚪 Logout</a>
-    </nav>
-    <div class="alt-top-right">
-        <div class="alt-search" role="search"><span>🔍</span><input type="search" id="altSearch" placeholder="Search ( / )" aria-label="Search" /></div>
-    <button id="altUserBtn" class="alt-user-btn"><span class="alt-avatar">AD</span><span class="hide-m" id="adminName"></span></button>
-    </div>
-</header>
-<aside class="alt-rail" aria-label="Quick actions">
-    <button title="Add Booking" data-quick="add-booking">➕</button>
-    <button title="Add Room" data-quick="add-room">🛏️</button>
-    <button title="Add Staff" data-quick="add-staff">👤</button>
-    <button title="Assign Task" data-quick="task">🧹</button>
-</aside>
-<main class="alt-wrapper" id="dash" tabindex="-1">
-    <section class="alt-panels" aria-labelledby="altOps">
-        <h2 id="altOps" class="sr-only">Operational Panels</h2>
-        <article class="alt-panel" aria-labelledby="altRecentTitle"><h3 id="altRecentTitle" class="alt-panel-title">Recent Activity</h3><ul class="alt-list" id="altRecent"><li>Room 304 checked in <span class="alt-time">09:14</span></li><li>Invoice #782 generated <span class="alt-time">09:06</span></li><li>Late checkout approved <span class="alt-time">08:52</span></li><li>New staff shift assigned <span class="alt-time">08:40</span></li></ul></article>
-        <article class="alt-panel" aria-labelledby="altHKTitle"><h3 id="altHKTitle" class="alt-panel-title">Housekeeping</h3><ul class="alt-list"><li>Rm 210 – Turnover <span class="alt-pill pending">Pending</span></li><li>Rm 402 – Deep Clean <span class="alt-pill">In Progress</span></li><li>Rm 115 – Linen Refresh <span class="alt-pill ok">Done</span></li><li>Rm 506 – Sanitization <span class="alt-pill pending">Pending</span></li></ul></article>
-        <article class="alt-panel" aria-labelledby="altCheckinsTitle"><h3 id="altCheckinsTitle" class="alt-panel-title">Upcoming Check-ins</h3><ul class="alt-list"><li>10:30 • A. Rahman – Deluxe Suite <span class="alt-time">ETA</span></li><li>11:00 • S. Chen – Executive King <span class="alt-time">ETA</span></li><li>11:45 • P. Davis – Standard Twin <span class="alt-time">ETA</span></li><li>12:15 • L. Ortega – Family Suite <span class="alt-time">ETA</span></li></ul></article>
-    </section>
-    <section aria-labelledby="altBookingsTitle">
-        <h2 id="altBookingsTitle" class="alt-panel-title">Today's Bookings</h2>
-        <div class="alt-table-wrap" role="region" aria-label="Bookings table">
-            <table class="alt-table" id="altBookingsTable">
-                <thead><tr><th>Booking ID</th><th>Guest</th><th>Room</th><th>Check-In</th><th>Check-Out</th><th>Status</th><th>Amount</th></tr></thead>
-                <tbody>
-                    <tr><td>BK-7821</td><td>Adil Khan</td><td>Deluxe 304</td><td>09:00</td><td>Tomorrow</td><td><span class="alt-pill ok">Checked-In</span></td><td>$240</td></tr>
-                    <tr><td>BK-7822</td><td>Sara Lee</td><td>Standard 208</td><td>08:45</td><td>Tomorrow</td><td><span class="alt-pill pending">Pending</span></td><td>$180</td></tr>
-                    <tr><td>BK-7823</td><td>David Kim</td><td>Executive 512</td><td>09:30</td><td>+2 Days</td><td><span class="alt-pill due">Due Out</span></td><td>$460</td></tr>
-                    <tr><td>BK-7824</td><td>Linda Park</td><td>Suite 601</td><td>09:45</td><td>+3 Days</td><td><span class="alt-pill ok">Checked-In</span></td><td>$680</td></tr>
-                </tbody>
-            </table>
+        <div class="alt-brand"><img src="../Image/RH.png" alt="Rio Hotel Logo" /><span>Rio Hotel Admin</span></div>
+        <nav class="alt-nav" id="altPrimaryNav">
+                <a href="#dash" class="alt-nav-link active">🏠 Dashboard</a>
+                <a href="#bookings" class="alt-nav-link">🛎️ Bookings</a>
+                <a href="#rooms" class="alt-nav-link">🛏️ Rooms</a>
+                <a href="#housekeeping" class="alt-nav-link">🧹 Housekeeping</a>
+                <a href="#finance" class="alt-nav-link">💳 Finance</a>
+                <a href="#reports" class="alt-nav-link">📊 Reports</a>
+                <a href="#settings" class="alt-nav-link">⚙️ Settings</a>
+                <a href="../php/logout.php" class="alt-nav-link">🚪 Logout</a>
+        </nav>
+        <div class="alt-top-right">
+                <div class="alt-search" role="search"><span>🔍</span><input type="search" id="altSearch" placeholder="Search ( / )" /></div>
+        <button id="altUserBtn" class="alt-user-btn"><span class="alt-avatar">AD</span><span class="hide-m" id="adminName"></span></button>
         </div>
-    </section>
-    <footer class="alt-footer" role="contentinfo">© <span id="altYear"></span> Rio Hotel • Admin Dashboard</footer>
+</header>
+<main class="alt-wrapper" id="dash">
+        <section class="alt-panels">
+                <h2 id="altOps" class="sr-only">Operational Panels</h2>
+                <article class="alt-panel"><h3 id="altRecentTitle" class="alt-panel-title">Recent Activity</h3><ul class="alt-list" id="altRecent"><li>Room 304 checked in <span class="alt-time">09:14</span></li><li>Invoice #782 generated <span class="alt-time">09:06</span></li><li>Late checkout approved <span class="alt-time">08:52</span></li><li>New staff shift assigned <span class="alt-time">08:40</span></li></ul></article>
+                <article class="alt-panel"><h3 id="altHKTitle" class="alt-panel-title">Housekeeping</h3><ul class="alt-list"><li>Rm 210 – Turnover <span class="alt-pill pending">Pending</span></li><li>Rm 402 – Deep Clean <span class="alt-pill">In Progress</span></li><li>Rm 115 – Linen Refresh <span class="alt-pill ok">Done</span></li><li>Rm 506 – Sanitization <span class="alt-pill pending">Pending</span></li></ul></article>
+                <article class="alt-panel"><h3 id="altCheckinsTitle" class="alt-panel-title">Upcoming Check-ins</h3><ul class="alt-list"><li>10:30 • A. Rahman – Deluxe Suite <span class="alt-time">ETA</span></li><li>11:00 • S. Chen – Executive King <span class="alt-time">ETA</span></li><li>11:45 • P. Davis – Standard Twin <span class="alt-time">ETA</span></li><li>12:15 • L. Ortega – Family Suite <span class="alt-time">ETA</span></li></ul></article>
+        </section>
+        <section>
+                <h2 id="altBookingsTitle" class="alt-panel-title">Today's Bookings</h2>
+                <div class="alt-table-wrap" role="region">
+                        <table class="alt-table" id="altBookingsTable">
+                                <thead><tr><th>Booking ID</th><th>Guest</th><th>Room</th><th>Check-In</th><th>Check-Out</th><th>Status</th><th>Amount</th></tr></thead>
+                                <tbody>
+                                        <tr><td>BK-7821</td><td>Adil Khan</td><td>Deluxe 304</td><td>09:00</td><td>Tomorrow</td><td><span class="alt-pill ok">Checked-In</span></td><td>$240</td></tr>
+                                        <tr><td>BK-7822</td><td>Sara Lee</td><td>Standard 208</td><td>08:45</td><td>Tomorrow</td><td><span class="alt-pill pending">Pending</span></td><td>$180</td></tr>
+                                        <tr><td>BK-7823</td><td>David Kim</td><td>Executive 512</td><td>09:30</td><td>+2 Days</td><td><span class="alt-pill due">Due Out</span></td><td>$460</td></tr>
+                                        <tr><td>BK-7824</td><td>Linda Park</td><td>Suite 601</td><td>09:45</td><td>+3 Days</td><td><span class="alt-pill ok">Checked-In</span></td><td>$680</td></tr>
+                                </tbody>
+                        </table>
+                </div>
+        </section>
+        <footer class="alt-footer" role="contentinfo">© <span id="altYear"></span> Rio Hotel • Admin Dashboard</footer>
 </main>
 <div class="alt-toast-region" aria-live="polite" aria-atomic="false"></div>
 </body>

@@ -1,3 +1,6 @@
+/* Validation helper styles used by PHP-rendered forms */
+.invalid { border: 1.5px solid #e74c3c !important; background: #fff5f5 !important; }
+.error-text { color: #e74c3c; font-size: 0.95em; margin-top: 6px; }
 /* Homepage Professional Layout */
 .homepage-hero {
     text-align: center;
@@ -366,6 +369,7 @@ body {
     padding: 1px;
     background: linear-gradient(120deg,#2563eb33,#7c3aed33);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
             mask-composite: exclude;
     pointer-events: none;

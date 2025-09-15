@@ -21,7 +21,7 @@ function render_login_form($oldUsername, $errors) {
     $pClass = isset($errors['password']) ? 'invalid' : '';
     $uErr = isset($errors['username']) ? '<div class="error-text">'.htmlspecialchars($errors['username']).'</div>' : '';
     $pErr = isset($errors['password']) ? '<div class="error-text">'.htmlspecialchars($errors['password']).'</div>' : '';
-    echo '<!DOCTYPE html><html><head><title>Login Page</title><link rel="stylesheet" href="../css/style.css"><style>.invalid{border:1.5px solid #e74c3c!important;background:#fff5f5!important}.error-text{color:#e74c3c;font-size:.95em;margin-top:6px}</style></head><body><div class="login-container"><h2>LOG-IN</h2><form action="../php/login_validation.php" method="POST"><div class="input-group"><label for="username">Username :</label><input type="text" name="username" id="username" value="'.$u.'" class="'.$uClass.'">'.$uErr.'</div><div class="input-group"><label for="password">Password :</label><input type="password" name="password" id="password" class="'.$pClass.'">'.$pErr.'</div><button type="submit">Login</button><div class="input-group"><p>Don\'t have an account? <a href="../view/register.html">Register here</a></p></div></form></div></body></html>';
+    // TODO: Add HTML output for login form
 }
 
 if (!empty($errors)) {

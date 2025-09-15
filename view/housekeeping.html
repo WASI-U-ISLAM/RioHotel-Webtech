@@ -1,4 +1,4 @@
-
+<!-- Auth guard PHP removed: static HTML version. Username injected via JS cookie. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,23 +11,29 @@
 <body class="alt-body">
 <header class="alt-topbar" role="banner">
   <div class="alt-brand"><img src="../Image/RH.png" alt="Rio Hotel Logo" /><span>Housekeeping</span></div>
-  <nav class="alt-nav" id="hkNav">
-    <a href="#tasks" class="alt-nav-link active">🧹 Tasks</a>
-    <a href="#rooms" class="alt-nav-link">🛏️ Rooms</a>
-    <a href="#supplies" class="alt-nav-link">📦 Supplies</a>
-    <a href="#staff" class="alt-nav-link">👥 Staff</a>
-    <a href="#reports" class="alt-nav-link">📊 Reports</a>
-    <a href="../php/logout.php" class="alt-nav-link">🚪 Logout</a>
+  <nav class="alt-nav" id="hkNav" aria-label="Housekeeping navigation">
+    <a href="#tasks" class="alt-nav-link active" data-link="tasks">🧹 Tasks</a>
+    <a href="#rooms" class="alt-nav-link" data-link="rooms">🛏️ Rooms</a>
+    <a href="#supplies" class="alt-nav-link" data-link="supplies">📦 Supplies</a>
+    <a href="#staff" class="alt-nav-link" data-link="staff">👥 Staff</a>
+    <a href="#reports" class="alt-nav-link" data-link="reports">📊 Reports</a>
+    <a href="../php/logout.php" class="alt-nav-link" data-link="logout">🚪 Logout</a>
   </nav>
   <div class="alt-top-right">
-  <div class="alt-search" role="search"><span>🔍</span><input type="search" id="hkSearch" placeholder="Search tasks" /></div>
+    <div class="alt-search" role="search"><span>🔍</span><input type="search" id="hkSearch" placeholder="Search tasks" aria-label="Search" /></div>
   <button id="hkUserBtn" class="alt-user-btn"><span class="alt-avatar">HK</span><span class="hide-m" id="hkName"></span></button>
   </div>
 </header>
-<main class="alt-wrapper">
-  <section id="tasks" class="alt-panels">
+<aside class="alt-rail" aria-label="Quick actions">
+  <button title="Add Task" data-quick="add-task">➕</button>
+  <button title="Mark Clean" data-quick="mark-clean">✅</button>
+  <button title="Report Issue" data-quick="issue">⚠️</button>
+  <button title="Order Supplies" data-quick="order">📦</button>
+</aside>
+<main class="alt-wrapper" tabindex="-1">
+  <section id="tasks" class="alt-panels" aria-labelledby="hkTasksTitle">
     <h2 id="hkTasksTitle" class="sr-only">Task Queue</h2>
-  <article class="alt-panel">
+    <article class="alt-panel" aria-labelledby="taskQueueTitle">
       <h3 id="taskQueueTitle" class="alt-panel-title">Task Queue</h3>
       <ul class="alt-list" id="hkTaskList">
         <li>Rm 210 – Turnover <span class="alt-pill pending">In Progress</span></li>
@@ -36,9 +42,9 @@
         <li>Rm 506 – Sanitization <span class="alt-pill due">Pending</span></li>
       </ul>
     </article>
-  <article class="alt-panel">
+    <article class="alt-panel" aria-labelledby="liveStatusTitle">
       <h3 id="liveStatusTitle" class="alt-panel-title">Live Room Status</h3>
-  <div class="alt-table-wrap" role="region">
+      <div class="alt-table-wrap" role="region" aria-label="Room status table">
         <table class="alt-table" id="hkRoomsTable">
           <thead><tr><th>Room</th><th>Status</th><th>Priority</th><th>ETA</th></tr></thead>
           <tbody>
@@ -50,7 +56,7 @@
         </table>
       </div>
     </article>
-  <article class="alt-panel" id="supplies">
+    <article class="alt-panel" id="supplies" aria-labelledby="suppliesTitle">
       <h3 id="suppliesTitle" class="alt-panel-title">Supply Requests</h3>
       <ul class="alt-list" id="supplyList">
         <li>Linen Packs (6) <span class="alt-time">Requested 09:10</span></li>
@@ -58,7 +64,7 @@
         <li>Vacuum Filter (1) <span class="alt-time">Requested 08:40</span></li>
       </ul>
     </article>
-  <article class="alt-panel" id="staff">
+    <article class="alt-panel" id="staff" aria-labelledby="staffTitle">
       <h3 id="staffTitle" class="alt-panel-title">Shift Overview</h3>
       <ul class="alt-list" id="staffShiftList">
         <li>Ayesha • Floor 2 <span class="alt-time">On Duty</span></li>
@@ -68,7 +74,7 @@
       </ul>
     </article>
   </section>
-  <section id="reports">
+  <section id="reports" aria-labelledby="hkReportsTitle">
     <h2 id="hkReportsTitle" class="alt-panel-title">Reports</h2>
     <div class="alt-panel" style="margin-top:18px;">
       <p style="margin:0;font-size:0.8rem;color:var(--alt-text-soft);">Reporting module coming soon (room turnaround time, efficiency, supply consumption).</p>

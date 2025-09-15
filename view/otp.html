@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Enter OTP</title>
-<link rel="stylesheet" href="../css/style.css">
+  <title>Enter OTP</title>
+  <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body class="otp-page-wrapper">
-<<<<<<< HEAD
   <main class="otp-box" role="main">
     <h2 id="otpHeading">Two Step Verification</h2>
     <p class="otp-lead">We sent a 6 digit code.</p>
@@ -16,72 +15,11 @@
     <form id="otpForm" action="../php/otp_validation.php" method="post" novalidate>
       <div class="otp-field-group">
         <label for="otpInput">Verification Code</label>
-  <input type="text" name="otp" id="otpInput" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="123456" autocomplete="one-time-code" required />
+        <input type="text" name="otp" id="otpInput" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="123456" autocomplete="one-time-code" required />
       </div>
-      
-    <button type="submit">Verify Code</button>
-  <a href="login.html" class="back-link">Back to Login</a>
+      <button type="submit">Verify Code</button>
+      <a href="login.html" class="back-link">Back to Login</a>
     </form>
-    <div class="otp-hint" id="expiresHint"></div>
   </main>
- 
-=======
-<main class="otp-box" role="main" aria-labelledby="otpHeading">
-<h2 id="otpHeading">Two Step Verification</h2>
-<p class="otp-lead">We sent a 6 digit code (demo shows it below).</p>
-<div id="demoOtp" aria-live="polite" style="display:none"></div>
-<form id="otpForm" action="../php/otp_validation.php" method="post" novalidate>
-<div class="otp-field-group">
-<label for="otpInput">Verification Code</label>
-<input type="text" name="otp" id="otpInput" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="123456" autocomplete="one-time-code" aria-describedby="otpError otpSuccess expiresHint" required />
-</div>
-<div class="otp-status-area" aria-live="assertive">
-<div class="msg" id="otpError">Invalid or expired code.</div>
-<div class="msg success" id="otpSuccess">Code valid! Redirecting...</div>
-</div>
-<button type="submit" aria-label="Verify code">Verify Code</button>
-<a href="login.html" class="back-link" aria-label="Back to login page">Back to Login</a>
-</form>
-<div class="otp-hint" id="expiresHint" aria-live="polite"></div>
-</main>
-<script>
-(function(){
-  const params=new URLSearchParams(location.search);
-  const show=params.get('show');
-  const err=params.get('error');
-  if(err==='expired'){document.getElementById('otpError').textContent='Code expired. Login again.';document.getElementById('otpError').style.display='block';}
-  else if(err==='invalid'){document.getElementById('otpError').style.display='block';}
-  if(show==='1'){
-    // Demo only: fetch OTP directly (REMOVE IN PRODUCTION)
-    fetch('../php/otp_validation.php?preview=1').then(r=>r.ok?r.text():Promise.reject()).then(code=>{if(code){const d=document.getElementById('demoOtp');d.textContent='Demo OTP: '+code;d.style.display='block';}}).catch(()=>{});
-  }
-})();
-// Enhance input UX + simple diagnostics
-(function(){
-  const input = document.getElementById('otpInput');
-  if(!input) return;
-  input.focus();
-  input.addEventListener('input', function(){
-    // Keep only digits and trim to 6
-    let v = this.value.replace(/\D+/g,'').slice(0,6);
-    if(this.value !== v) this.value = v;
-    if(v.length === 6){
-      console.log('[OTP] Auto-submitting with 6 digits');
-      this.form.requestSubmit();
-    }
-  });
-  input.addEventListener('paste', e=>{
-    e.preventDefault();
-    const txt = (e.clipboardData.getData('text')||'').replace(/\D+/g,'').slice(0,6);
-    if(txt){input.value = txt; input.dispatchEvent(new Event('input'));}
-  });
-  // Log if session cookie missing (helps diagnose server-side issue)
-  setTimeout(()=>{
-    const hasSession = document.cookie.indexOf('PHPSESSID=')!==-1;
-    if(!hasSession){console.warn('[OTP] No PHPSESSID cookie present. Session will fail.');}
-  },100);
-})();
-</script>
->>>>>>> c3f2094e55b387c12479874a1f51bb6d5acf0b9f
 </body>
 </html>

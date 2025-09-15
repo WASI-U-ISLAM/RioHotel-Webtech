@@ -10,12 +10,11 @@ require_once __DIR__ . '/db.php';
 $username = trim($_POST['username'] ?? '');
 $password = $_POST['password'] ?? '';
 
-// Inline field validation
 $errors = [];
 if ($username === '') { $errors['username'] = 'Username is required.'; }
 if ($password === '') { $errors['password'] = 'Password is required.'; }
 
-// helper to render the login form with errors
+
 function render_login_form($oldUsername, $errors) {
     $u = htmlspecialchars($oldUsername ?? '', ENT_QUOTES, 'UTF-8');
     $uClass = isset($errors['username']) ? 'invalid' : '';
@@ -38,7 +37,6 @@ if (!$stmt) {
 $stmt->bind_param('s', $username);
 $stmt->execute();
 
-// Support environments without mysqlnd: use get_result if available, else bind_result
 $user = null;
 if (function_exists('mysqli_stmt_get_result')) {
     $result = $stmt->get_result();
@@ -56,7 +54,6 @@ if (!$user || !password_verify($password, $user['password_hash'])) {
     exit();
 }
 
-// Create OTP (6 digits)
 $otp = random_int(100000, 999999);
 $_SESSION['otp_user_id'] = $user['id'];
 $_SESSION['otp_username'] = $user['username'];

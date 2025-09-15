@@ -1,6 +1,5 @@
 <?php
 session_start();
-// Clear session
 $_SESSION = [];
 if (ini_get('session.use_cookies')) {
     $params = session_get_cookie_params();
@@ -8,7 +7,6 @@ if (ini_get('session.use_cookies')) {
 }
 
 session_destroy();
-// Clear display name cookie
 setcookie('rh_username', '', time()-3600, '/');
 header('Location: ../view/login.html?loggedout=1');
 exit();
